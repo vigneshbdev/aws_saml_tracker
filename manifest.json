@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "AWS SAML Token Copier",
+  "version": "1.0",
+  "description": "Copies SAML token to clipboard when clicking the extension icon.",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["https://signin.aws.amazon.com/saml*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://signin.aws.amazon.com/saml*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_title": "Copy SAML Token"
+  }
+}
